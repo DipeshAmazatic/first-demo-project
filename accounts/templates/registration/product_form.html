@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="container">
+    <h3>Add New Product:</h3>
+    <form method="POST">
+        
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {{all_data}}
+
+        <div class="center">
+        <input type="submit" value="Submit" class="btn btn-success">
+        <a class="btn btn-success" href="{% url 'accounts:product-variant' %}">ADD NEW VARIANT</a>
+        <input class="btn btn-success" type="button" value="BACK" onclick="history.back()">
+        </div>
+    </form>
+</div>
+
+{% endblock %}

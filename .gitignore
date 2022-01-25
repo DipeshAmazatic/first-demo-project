@@ -1,0 +1,17 @@
+# Visual Studio
+.vscode/
+.history/
+
+# Python
+*.pyc
+*~
+__pycache__
+
+# Env
+.env
+demo/
+venv/
+
+# Database
+db.sqlite3
+

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+{% load bootstrap4 %}
+{% if variant_info %}
+    {% for variant_infos in variant_info %}
+        <div class="col-md-8">
+            <div class="list-group">
+                <h3 class="title list-group-item-heading">{{ variant_infos.name }}</h3>
+                <div class="list-group-item-text container-fluid">
+                    <p>{{ variant_infos.description|safe }}</p>
+                    <p>{{ variant_infos.feature|safe }}</p>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span class="badge">{{variant_infos.price}}</span>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="badge">{{variant_infos.rating}} out of 5.</span> 
+                        </div>
+                    </div>
+                    {% if user.is_superuser %}
+                        <a class="btn btn-success glyphicon glyphicon-trash" href="{% url 'accounts:delete-variant' variant_infos.id%}"></a>
+                        <a class="btn btn-success glyphicon glyphicon-pencil" href="{% url 'accounts:update-variant' variant_infos.id %}"></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
+{% if user.is_superuser %}
+    <a class="btn btn-success" href="{% url 'accounts:product-variant' %}">ADD NEW VARIANT</a>
+{% endif %}
+<input class="btn btn-success" type="button" value="BACK" onclick="history.back()">
+{% endblock %}

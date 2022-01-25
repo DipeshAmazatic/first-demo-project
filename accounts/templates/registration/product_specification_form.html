@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="container">
+    <h3>Add Product Specification:</h3>
+    <form method="POST">
+        
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            
+        </div>
+        <input type="submit" value="Submit" class="btn btn-success">
+    </form>
+</div>
+
+{% endblock %}
